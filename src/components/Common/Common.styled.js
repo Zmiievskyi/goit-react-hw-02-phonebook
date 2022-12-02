@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { color, layout, space, flexbox } from 'styled-system';
+import { color, border, layout, space, flexbox } from 'styled-system';
 
 
 export const Title = styled.h2`
@@ -15,8 +15,8 @@ export const SectionBox = styled.section`
 `;
 
 export const Box = styled.div`
-padding: 10px;
-border: 1px solid black;
+  padding: 10px;
+  ${border};
   ${layout};
   ${space};
   ${flexbox};

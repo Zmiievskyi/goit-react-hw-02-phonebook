@@ -12,7 +12,12 @@ export default class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    filter: [],
+    filter: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
   };
 
   handleContactsList = contact => {
@@ -29,6 +34,7 @@ export default class App extends Component {
       this.setState(prevState => {
         return {
           contacts: [newContact, ...prevState.contacts],
+          filter: [newContact, ...prevState.contacts],
         };
       });
     } else {
@@ -36,23 +42,21 @@ export default class App extends Component {
     }
   };
 
-  handleFilter = evt => {
-    const searchName = evt.target.value;
+  onFiltred = name => {
     let filtredContacts = this.state.contacts.filter(contact =>
-      contact.name.toLowerCase().includes(searchName)
+      contact.name.toLowerCase().includes(name)
     );
     this.setState({ filter: filtredContacts });
   };
 
-  handleRemove = id => {
-    const newState = this.state.contacts.filter(item => item.id !== id);
+  onRemove = id => {
+    const newContactsList = this.state.contacts.filter(item => item.id !== id);
+    const newFiltredList = this.state.filter.filter(item => item.id !== id);
     this.setState({
-      contacts: newState,
-      filter: [...newState],
+      contacts: [...newContactsList],
+      filter: [...newFiltredList],
     });
   };
-
-  
 
   render() {
     return (
@@ -63,9 +67,8 @@ export default class App extends Component {
         <Section title="Contacts">
           <Contacts
             list={this.state.filter}
-            onFilter={this.handleFilter}
-            onRemove={this.handleRemove}
-            filterInput={this.filterInput}
+            onFiltred={this.onFiltred}
+            onRemove={this.onRemove}
           />
         </Section>
         <GlobalStyle />

@@ -25,8 +25,13 @@ export default class Phonebook extends Component {
   render() {
     const { name, number: phone } = this.state;
     return (
-      <Box display="flex" alignItems="flex-start" flexDirection="column">
-        <form onSubmit={this.handleSubmit} autoComplete='off'>
+      <Box
+        display="flex"
+        alignItems="flex-start"
+        flexDirection="column"
+        border="1px solid"
+      >
+        <form onSubmit={this.handleSubmit} autoComplete="off">
           <Label>
             Name
             <input

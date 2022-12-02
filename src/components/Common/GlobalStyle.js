@@ -23,6 +23,11 @@ ul {
   padding: 0;
   list-style: none;
 }
+
+span {
+  margin-left: auto;
+  padding-right: 10px;
+}
 `;
 
 export default GlobalStyle;

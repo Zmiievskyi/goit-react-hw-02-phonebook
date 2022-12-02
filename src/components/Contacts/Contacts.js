@@ -1,32 +1,24 @@
-// import React, { Component } from 'react';
-import { Box, Label } from '../Common/Common.styled';
-export const Contacts = function ({ list, onFilter, onRemove, filterInput }) {
-  function inputFilt (evt) {
-    filterInput(evt)
+import {Filter} from 'components/App/Filter/Filter';
+import { Box } from '../Common/Common.styled';
+
+export const Contacts =({list, onFiltred, onRemove})=> {
+
+    return (
+      <Box border="1px solid">
+        <Filter onFiltred={onFiltred} />
+        <ul>
+          {list.map(({id,name,number}) => {
+            return (
+              <li key={id}>
+                <Box display="flex" justifyContent="space-between">
+                  {name}:<span>{number}</span>
+                  <button onClick={() => onRemove(id)}>Delete</button>
+                </Box>
+              </li>
+            );
+          })}
+        </ul>
+      </Box>
+    );
   }
 
-  return (
-    <Box>
-      <Label>
-        Find contacts by name
-        <input
-          autoComplete="off"
-          type="text"
-          name="name"
-          //   value={() => this.inputFilt()}
-          onChange={onFilter}
-        />
-      </Label>
-      <ul>
-        {list.map(item => {
-          return (
-            <li key={item.id}>
-              {item.name}:{item.number}
-              <button onClick={() => onRemove(item.id)}>Delete</button>
-            </li>
-          );
-        })}
-      </ul>
-    </Box>
-  );
-};

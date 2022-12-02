@@ -1,29 +1,20 @@
-import React, { Component } from 'react';
-import { Box, Button, Label } from 'components/Common/Common.styled';
+// import React from 'react';
+import {  Label } from 'components/Common/Common.styled';
 
-export default class Phonebook extends Component {
-  state = {
-      : '',
-    number: '',
+export const Filter = props => {
+
+  const handleFilter = evt => {
+    props.onFiltred(evt.target.value);
   };
 
-  handleInputName = evt => {
-    this.setState({ name: evt.target.value });
-  };
-
-  handleInputNumber = evt => {
-    this.setState({ number: evt.target.value });
-  };
-
-  handleSubmit = evt => {
-    evt.preventDefault();
-    this.props.onSubmit({ name: this.state.name, number: this.state.number });
-    this.setState({ name: '', number: '' });
-    evt.currentTarget.reset();
-  };
-
-  render() {
-   
-    return ();
-  }
-}
+  return (
+    <Label>
+      Find contacts by name
+      <input
+        autoComplete="off"
+        type="text"
+        onChange={handleFilter}
+      />
+    </Label>
+  );
+};
