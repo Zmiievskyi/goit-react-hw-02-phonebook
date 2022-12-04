@@ -22,7 +22,7 @@ export default class App extends Component {
 
   handleContactsList = contact => {
     const checkSimilar = this.state.contacts.some(
-      item => item.name === contact.name
+      item => item.name.toLowerCase() === contact.name.toLowerCase()
     );
     if (!checkSimilar) {
       const contactId = nanoid();

@@ -4,7 +4,9 @@ import {  Label } from 'components/Common/Common.styled';
 export const Filter = props => {
 
   const handleFilter = evt => {
-    props.onFiltred(evt.target.value);
+    const searchName = evt.target.value.toLowerCase();
+    // console.log(searchName);
+    props.onFiltred(searchName);
   };
 
   return (
