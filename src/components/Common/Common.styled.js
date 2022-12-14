@@ -5,6 +5,7 @@ import { color, border, layout, space, flexbox } from 'styled-system';
 export const Title = styled.h2`
   /* text-align: center; */
 `;
+
 export const SectionBox = styled.section`
   flex-wrap: wrap;
   flex-direction: column;
